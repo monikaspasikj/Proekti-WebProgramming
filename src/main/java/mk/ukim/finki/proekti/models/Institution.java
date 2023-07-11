@@ -11,7 +11,7 @@ import lombok.Data;
 @Entity
 public class Institution {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
     String location;
