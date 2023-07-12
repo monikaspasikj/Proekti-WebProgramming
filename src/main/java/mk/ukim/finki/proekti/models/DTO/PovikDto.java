@@ -1,8 +1,11 @@
-package mk.ukim.finki.proekti.models;
+package mk.ukim.finki.proekti.models.DTO;
 
-
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
+import mk.ukim.finki.proekti.models.Institution;
 import mk.ukim.finki.proekti.models.enumerations.TypePovik;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -10,33 +13,27 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 
 @Data
-@Entity
-public class Povik {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long id;
+public class PovikDto {
 
     String name;
     String acronym;
+
+
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     LocalDate endDate;
-    @Enumerated(EnumType.STRING)
+
     TypePovik typePovik;
-    @OneToOne
-    Institution institution;
-    @Enumerated(EnumType.STRING)
+
+    Long institution;
+
     TypeStatus typeStatus;
 
-    public Povik(String name,String acronym, LocalDate endDate, TypePovik typePovik, Institution institution, TypeStatus typeStatus) {
+    public PovikDto(String name,String acronym, LocalDate endDate, TypePovik typePovik, Long institution, TypeStatus typeStatus) {
         this.name=name;
         this.acronym = acronym;
         this.endDate = endDate;
         this.typePovik = typePovik;
         this.institution = institution;
-        this.typeStatus =  typeStatus;
-    }
-
-    public Povik() {
-
+        this.typeStatus = typeStatus;
     }
 }
