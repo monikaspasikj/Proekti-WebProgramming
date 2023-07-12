@@ -35,8 +35,14 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void addTeacher(String name, String surname, String email, TypeTeacher typeTeacher) {
-        Teacher teacher = new Teacher(name, surname, email, typeTeacher);
-        teacherRepository.save(teacher);
+    public Optional<Teacher> addTeacher(String name, String surname, String email, TypeTeacher typeTeacher) {
+        return Optional.of(teacherRepository.save(new Teacher(name, surname, email, typeTeacher)));
     }
+
+    @Override
+    public Optional<Teacher> editTeacher(Long id, String name, String surname, String email, TypeTeacher typeTeacher) {
+        delete(id);
+        return addTeacher(name, surname, email, typeTeacher);
+    }
+
 }

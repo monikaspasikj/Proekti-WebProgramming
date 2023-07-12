@@ -12,6 +12,8 @@ public interface InstitutionService {
 
     void delete(Long id);
 
-    void addInstitution(String name, String location);
+    Optional<Institution> addInstitution(String name, String location);
+
+    Optional<Institution> editInstitution(Long id, String name, String location);
 
 }
