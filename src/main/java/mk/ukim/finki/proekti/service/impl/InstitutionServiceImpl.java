@@ -1,6 +1,8 @@
 package mk.ukim.finki.proekti.service.impl;
 
+import mk.ukim.finki.proekti.models.DTO.InstitutionDto;
 import mk.ukim.finki.proekti.models.Institution;
+import mk.ukim.finki.proekti.models.exceptions.InstitutionNotFoundException;
 import mk.ukim.finki.proekti.repository.InstitutionRepository;
 import mk.ukim.finki.proekti.service.InstitutionService;
 import org.springframework.stereotype.Service;
@@ -28,19 +30,22 @@ public class InstitutionServiceImpl implements InstitutionService {
 
     @Override
     public void delete(Long id) {
-        Optional<Institution> institution = findById(id);
-        institution.ifPresent(institutionRepository::delete);
+        Institution institution = this.findById(id).orElseThrow(InstitutionNotFoundException::new);
+        this.institutionRepository.delete(institution);
     }
 
     @Override
-    public Optional<Institution> addInstitution(String name, String location) {
-        return Optional.of(institutionRepository.save(new Institution(name, location)));
+    public Optional<Institution> addInstitution(InstitutionDto institutionDto) {
+        Institution institution= new Institution(institutionDto.getName(), institutionDto.getLocation());
+        return  Optional.of(this.institutionRepository.save(institution));
     }
 
     @Override
-    public Optional<Institution> editInstitution(Long id, String name, String location) {
-        delete(id);
-        return addInstitution(name, location);
+    public Optional<Institution> editInstitution(Long id, InstitutionDto institutionDto) {
+        Institution institution=this.findById(id).orElseThrow(InstitutionNotFoundException::new);
+        institution.setName(institutionDto.getName());
+        institution.setLocation(institutionDto.getLocation());
+        return Optional.of(this.institutionRepository.save(institution));
     }
 
 }

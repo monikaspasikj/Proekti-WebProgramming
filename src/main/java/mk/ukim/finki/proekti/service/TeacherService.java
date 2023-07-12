@@ -1,5 +1,6 @@
 package mk.ukim.finki.proekti.service;
 
+import mk.ukim.finki.proekti.models.DTO.TeacherDto;
 import mk.ukim.finki.proekti.models.Teacher;
 import mk.ukim.finki.proekti.models.enumerations.TypeTeacher;
 
@@ -13,7 +14,7 @@ public interface TeacherService {
 
     void delete(Long id);
 
-    Optional<Teacher> addTeacher(String name, String surname, String email, TypeTeacher typeTeacher);
+    Optional<Teacher> addTeacher(TeacherDto teacherDto);
 
-    Optional<Teacher> editTeacher(Long id, String name, String surname, String email, TypeTeacher typeTeacher);
+    Optional<Teacher> editTeacher(Long id, TeacherDto teacherDto);
 }

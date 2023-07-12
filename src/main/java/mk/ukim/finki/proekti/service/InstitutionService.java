@@ -1,5 +1,6 @@
 package mk.ukim.finki.proekti.service;
 
+import mk.ukim.finki.proekti.models.DTO.InstitutionDto;
 import mk.ukim.finki.proekti.models.Institution;
 
 import java.util.List;
@@ -12,8 +13,8 @@ public interface InstitutionService {
 
     void delete(Long id);
 
-    Optional<Institution> addInstitution(String name, String location);
+    Optional<Institution> addInstitution(InstitutionDto institutionDto);
 
-    Optional<Institution> editInstitution(Long id, String name, String location);
+    Optional<Institution> editInstitution(Long id, InstitutionDto institutionDto);
 
 }

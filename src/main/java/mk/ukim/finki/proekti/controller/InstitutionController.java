@@ -1,5 +1,6 @@
 package mk.ukim.finki.proekti.controller;
 
+import mk.ukim.finki.proekti.models.DTO.InstitutionDto;
 import mk.ukim.finki.proekti.models.Institution;
 import mk.ukim.finki.proekti.service.InstitutionService;
 import org.springframework.http.ResponseEntity;
@@ -30,15 +31,15 @@ public class InstitutionController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Institution> addInstitution(@RequestParam String name, @RequestParam String location) {
-        return this.institutionService.addInstitution(name, location)
+    public ResponseEntity<Institution> addInstitution(@RequestBody InstitutionDto institutionDto) {
+        return this.institutionService.addInstitution(institutionDto)
                 .map(institution -> ResponseEntity.ok().body(institution))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<Institution> editInstitution(@PathVariable Long id, @RequestParam String name, @RequestParam String location) {
-        return this.institutionService.editInstitution(id, name, location)
+    public ResponseEntity<Institution> editInstitution(@PathVariable Long id, @RequestBody InstitutionDto institutionDto) {
+        return this.institutionService.editInstitution(id, institutionDto)
                 .map(institution -> ResponseEntity.ok().body(institution))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }

@@ -1,6 +1,7 @@
 package mk.ukim.finki.proekti.controller;
 
 import jakarta.persistence.Enumerated;
+import mk.ukim.finki.proekti.models.DTO.TeacherDto;
 import mk.ukim.finki.proekti.models.Teacher;
 import mk.ukim.finki.proekti.models.enumerations.TypeTeacher;
 import mk.ukim.finki.proekti.service.TeacherService;
@@ -40,17 +41,15 @@ public class TeacherController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Teacher> addTeacher(@RequestParam String name, @RequestParam String surname, @RequestParam String email,
-                                              @RequestParam TypeTeacher typeTeacher) {
-        return this.teacherService.addTeacher(name, surname, email, typeTeacher)
+    public ResponseEntity<Teacher> addTeacher(@RequestBody TeacherDto teacherDto) {
+        return this.teacherService.addTeacher(teacherDto)
                 .map(teacher -> ResponseEntity.ok().body(teacher))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<Teacher> edit(@PathVariable Long id, @RequestParam String name, @RequestParam String surname, @RequestParam String email,
-                                        @RequestParam TypeTeacher typeTeacher) {
-        return this.teacherService.editTeacher(id, name, surname, email, typeTeacher)
+    public ResponseEntity<Teacher> edit(@PathVariable Long id, @RequestBody TeacherDto teacherDto) {
+        return this.teacherService.editTeacher(id, teacherDto)
                 .map(teacher -> ResponseEntity.ok().body(teacher))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }

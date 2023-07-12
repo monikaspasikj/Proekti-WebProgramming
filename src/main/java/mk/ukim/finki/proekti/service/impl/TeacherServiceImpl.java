@@ -1,7 +1,9 @@
 package mk.ukim.finki.proekti.service.impl;
 
+import mk.ukim.finki.proekti.models.DTO.TeacherDto;
 import mk.ukim.finki.proekti.models.Teacher;
 import mk.ukim.finki.proekti.models.enumerations.TypeTeacher;
+import mk.ukim.finki.proekti.models.exceptions.TeacherNotFoundException;
 import mk.ukim.finki.proekti.repository.TeacherRepository;
 import mk.ukim.finki.proekti.service.TeacherService;
 import org.springframework.stereotype.Service;
@@ -30,19 +32,24 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public void delete(Long id) {
-        Optional<Teacher> teacher = findById(id);
-        teacher.ifPresent(teacherRepository::delete);
+        Teacher teacher=this.findById(id).orElseThrow(TeacherNotFoundException::new);
+        this.teacherRepository.delete(teacher);
     }
 
     @Override
-    public Optional<Teacher> addTeacher(String name, String surname, String email, TypeTeacher typeTeacher) {
-        return Optional.of(teacherRepository.save(new Teacher(name, surname, email, typeTeacher)));
+    public Optional<Teacher> addTeacher(TeacherDto teacherDto) {
+        Teacher teacher=new Teacher(teacherDto.getName(), teacherDto.getSurname(), teacherDto.getEmail(), teacherDto.getTypeTeacher());
+        return  Optional.of(this.teacherRepository.save(teacher));
     }
 
     @Override
-    public Optional<Teacher> editTeacher(Long id, String name, String surname, String email, TypeTeacher typeTeacher) {
-        delete(id);
-        return addTeacher(name, surname, email, typeTeacher);
+    public Optional<Teacher> editTeacher(Long id, TeacherDto teacherDto) {
+        Teacher teacher=this.findById(id).orElseThrow(TeacherNotFoundException::new);
+        teacher.setName(teacherDto.getName());
+        teacher.setSurname(teacherDto.getSurname());
+        teacher.setEmail(teacherDto.getEmail());
+        teacher.setTypeTeacher(teacherDto.getTypeTeacher());
+        return Optional.of(this.teacherRepository.save(teacher));
     }
 
 }
