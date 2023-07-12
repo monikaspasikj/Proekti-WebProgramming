@@ -2,6 +2,7 @@ package mk.ukim.finki.proekti.controller;
 
 import mk.ukim.finki.proekti.models.Institution;
 import mk.ukim.finki.proekti.service.InstitutionService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,26 +23,31 @@ public class InstitutionController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Institution> findInstitutionById(@PathVariable Long id) {
-        return institutionService.findById(id);
+    public ResponseEntity<Institution> findInstitutionById(@PathVariable Long id) {
+        return this.institutionService.findById(id)
+                .map(institution -> ResponseEntity.ok().body(institution))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/add")
-    public List<Institution> addInstitution(@RequestParam String name, @RequestParam String location) {
-        institutionService.addInstitution(name, location);
-        return institutionService.findAll();
+    public ResponseEntity<Institution> addInstitution(@RequestParam String name, @RequestParam String location) {
+        return this.institutionService.addInstitution(name, location)
+                .map(institution -> ResponseEntity.ok().body(institution))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/edit/{id}")
-    public List<Institution> editInstitution(@PathVariable Long id, @RequestParam String name, @RequestParam String location) {
-        deleteInstitution(id);
-        return addInstitution(name, location);
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<Institution> editInstitution(@PathVariable Long id, @RequestParam String name, @RequestParam String location) {
+        return this.institutionService.editInstitution(id, name, location)
+                .map(institution -> ResponseEntity.ok().body(institution))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteInstitution(@PathVariable Long id) {
-        Optional<Institution> institution = institutionService.findById(id);
-        if (institution.isPresent())
-            institutionService.delete(id);
+    public ResponseEntity<Institution> deleteInstitution(@PathVariable Long id) {
+        this.institutionService.delete(id);
+        if (this.institutionService.findById(id).isEmpty())
+            return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
     }
 }

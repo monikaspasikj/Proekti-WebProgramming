@@ -13,5 +13,7 @@ public interface TeacherService {
 
     void delete(Long id);
 
-    void addTeacher(String name, String surname, String email, TypeTeacher typeTeacher);
+    Optional<Teacher> addTeacher(String name, String surname, String email, TypeTeacher typeTeacher);
+
+    Optional<Teacher> editTeacher(Long id, String name, String surname, String email, TypeTeacher typeTeacher);
 }

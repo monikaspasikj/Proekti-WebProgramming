@@ -33,8 +33,14 @@ public class InstitutionServiceImpl implements InstitutionService {
     }
 
     @Override
-    public void addInstitution(String name, String location) {
-        Institution institution = new Institution(name, location);
-        institutionRepository.save(institution);
+    public Optional<Institution> addInstitution(String name, String location) {
+        return Optional.of(institutionRepository.save(new Institution(name, location)));
     }
+
+    @Override
+    public Optional<Institution> editInstitution(Long id, String name, String location) {
+        delete(id);
+        return addInstitution(name, location);
+    }
+
 }
