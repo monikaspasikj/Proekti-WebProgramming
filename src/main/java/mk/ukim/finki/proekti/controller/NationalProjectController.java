@@ -35,7 +35,7 @@ public class NationalProjectController {
     }
 
     @PostMapping("/filter")
-    public List<NationalProject> findAllByPovikorStatus(@RequestParam(required = false) Long povik, @RequestParam(required = false) TypeStatus typeStatus) {
+    public List<NationalProject> findAllByCallorStatus(@RequestParam(required = false) Long povik, @RequestParam(required = false) TypeStatus typeStatus) {
         return this.nationalProjectService.findByCallOrStatus(povik, typeStatus);
     }
 

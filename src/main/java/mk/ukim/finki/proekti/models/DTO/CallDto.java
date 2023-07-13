@@ -6,7 +6,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
 import mk.ukim.finki.proekti.models.Institution;
-import mk.ukim.finki.proekti.models.enumerations.TypePovik;
+import mk.ukim.finki.proekti.models.enumerations.TypeCall;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,13 +22,13 @@ public class CallDto {
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     LocalDate endDate;
 
-    TypePovik typePovik;
+    TypeCall typePovik;
 
     Long institution;
 
     TypeStatus typeStatus;
 
-    public CallDto(String name, String acronym, LocalDate endDate, TypePovik typePovik, Long institution, TypeStatus typeStatus) {
+    public CallDto(String name, String acronym, LocalDate endDate, TypeCall typePovik, Long institution, TypeStatus typeStatus) {
         this.name=name;
         this.acronym = acronym;
         this.endDate = endDate;

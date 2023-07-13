@@ -6,7 +6,7 @@ import mk.ukim.finki.proekti.models.Call;
 import mk.ukim.finki.proekti.models.Teacher;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
 import mk.ukim.finki.proekti.models.exceptions.NationalProjectNotFoundException;
-import mk.ukim.finki.proekti.models.exceptions.PovikNotFoundException;
+import mk.ukim.finki.proekti.models.exceptions.CallNotFoundException;
 import mk.ukim.finki.proekti.models.exceptions.TeacherNotFoundException;
 import mk.ukim.finki.proekti.repository.NationalProjectRepository;
 import mk.ukim.finki.proekti.repository.TeacherRepository;
@@ -42,12 +42,12 @@ public class NationalProjectServiceImpl implements NationalProjectService {
     }
 
     @Override
-    public List<NationalProject> findByCallOrStatus(Long povik, TypeStatus status) {
-        Call p = this.callService.findById(povik).orElseThrow(PovikNotFoundException::new);
-        if (povik == null && status == null)
+    public List<NationalProject> findByCallOrStatus(Long call, TypeStatus status) {
+        Call p = this.callService.findById(call).orElseThrow(CallNotFoundException::new);
+        if (call == null && status == null)
             return this.findAll();
 
-        if (povik == null)
+        if (call == null)
             return this.findAll().stream().filter(project -> project.getTypeStatus().equals(status)).toList();
         else if (status == null)
             return this.findAll().stream().filter(project -> project.getCall().equals(p)).toList();
@@ -80,7 +80,7 @@ public class NationalProjectServiceImpl implements NationalProjectService {
     @Override
     public Optional<NationalProject> addNationalProject(NationalProjectDto nationalProjectDto) {
         Teacher manager = this.teacherRepository.findById(nationalProjectDto.getManager()).orElseThrow(TeacherNotFoundException::new);
-        Call call = this.callService.findById(nationalProjectDto.getPovik()).orElseThrow(PovikNotFoundException::new);
+        Call call = this.callService.findById(nationalProjectDto.getPovik()).orElseThrow(CallNotFoundException::new);
         List<Teacher> members = this.teacherRepository.findAllById(nationalProjectDto.getMembers());
 
         NationalProject nationalProject = new NationalProject(nationalProjectDto.getName(),
@@ -94,7 +94,7 @@ public class NationalProjectServiceImpl implements NationalProjectService {
     @Override
     public Optional<NationalProject> editNationalProject(Long id, NationalProjectDto nationalProjectDto) {
         Teacher manager = this.teacherRepository.findById(nationalProjectDto.getManager()).orElseThrow(TeacherNotFoundException::new);
-        Call call = this.callService.findById(nationalProjectDto.getPovik()).orElseThrow(PovikNotFoundException::new);
+        Call call = this.callService.findById(nationalProjectDto.getPovik()).orElseThrow(CallNotFoundException::new);
         List<Teacher> members = this.teacherRepository.findAllById(nationalProjectDto.getMembers());
 
         NationalProject nationalProject = this.findById(id).orElseThrow(NationalProjectNotFoundException::new);

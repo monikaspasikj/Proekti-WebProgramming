@@ -4,7 +4,7 @@ import mk.ukim.finki.proekti.models.DTO.CallDto;
 import mk.ukim.finki.proekti.models.Institution;
 import mk.ukim.finki.proekti.models.Call;
 import mk.ukim.finki.proekti.models.exceptions.InstitutionNotFoundException;
-import mk.ukim.finki.proekti.models.exceptions.PovikNotFoundException;
+import mk.ukim.finki.proekti.models.exceptions.CallNotFoundException;
 import mk.ukim.finki.proekti.repository.CallRepository;
 import mk.ukim.finki.proekti.service.InstitutionService;
 import mk.ukim.finki.proekti.service.CallService;
@@ -39,7 +39,7 @@ public class CallServiceImpl implements CallService {
 
     @Override
     public void delete(Long id) {
-        Call call = this.findById(id).orElseThrow(PovikNotFoundException::new);
+        Call call = this.findById(id).orElseThrow(CallNotFoundException::new);
         this.callRepository.delete(call);
     }
 
@@ -53,7 +53,7 @@ public class CallServiceImpl implements CallService {
 
     @Override
     public Optional<Call> editPovik(Long id, CallDto callDto) {
-        Call call = this.findById(id).orElseThrow(PovikNotFoundException::new);
+        Call call = this.findById(id).orElseThrow(CallNotFoundException::new);
         Institution institution = this.institutionService.findById(callDto.getInstitution()).orElseThrow(InstitutionNotFoundException::new);
 
 

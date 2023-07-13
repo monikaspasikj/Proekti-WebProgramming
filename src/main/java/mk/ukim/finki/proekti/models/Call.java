@@ -3,7 +3,7 @@ package mk.ukim.finki.proekti.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import mk.ukim.finki.proekti.models.enumerations.TypePovik;
+import mk.ukim.finki.proekti.models.enumerations.TypeCall;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,13 +21,13 @@ public class Call {
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     LocalDate endDate;
     @Enumerated(EnumType.STRING)
-    TypePovik typePovik;
+    TypeCall typePovik;
     @OneToOne
     Institution institution;
     @Enumerated(EnumType.STRING)
     TypeStatus typeStatus;
 
-    public Call(String name, String acronym, LocalDate endDate, TypePovik typePovik, Institution institution, TypeStatus typeStatus) {
+    public Call(String name, String acronym, LocalDate endDate, TypeCall typePovik, Institution institution, TypeStatus typeStatus) {
         this.name=name;
         this.acronym = acronym;
         this.endDate = endDate;
