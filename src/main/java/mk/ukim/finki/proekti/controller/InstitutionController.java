@@ -51,4 +51,16 @@ public class InstitutionController {
             return ResponseEntity.ok().build();
         return ResponseEntity.badRequest().build();
     }
+
+    @GetMapping("/byLocation")
+    public List<Institution> getAllByLocation(String location)
+    {
+        return institutionService.findByLocation(location);
+    }
+
+    @GetMapping("/byName")
+    public Institution findByName(String name)
+    {
+        return institutionService.findByName(name);
+    }
 }

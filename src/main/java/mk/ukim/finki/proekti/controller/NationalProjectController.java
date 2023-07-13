@@ -24,8 +24,6 @@ public class NationalProjectController {
     }
 
 
-
-
     @GetMapping("/all")
     public List<NationalProject> findAllNationalProjects() {
         return this.nationalProjectService.findAll();
@@ -40,20 +38,17 @@ public class NationalProjectController {
     }
 
     @PostMapping("/filter")
-    public List<NationalProject> findAllByPovikorStatus(@RequestParam(required = false) Long povik, @RequestParam(required = false) TypeStatus typeStatus)
-    {
-        return this.nationalProjectService.findByPovikorStatus(povik,typeStatus);
+    public List<NationalProject> findAllByPovikorStatus(@RequestParam(required = false) Long povik, @RequestParam(required = false) TypeStatus typeStatus) {
+        return this.nationalProjectService.findByPovikorStatus(povik, typeStatus);
     }
 
     @PostMapping("/filterByKeyword")
-    public List<NationalProject> findAllByKeyword(@RequestParam String keyword)
-    {
+    public List<NationalProject> findAllByKeyword(@RequestParam String keyword) {
         return this.nationalProjectService.findByKeyWord(keyword);
     }
 
     @PostMapping("/search")
-    public List<NationalProject> findAllByName(@RequestParam String name)
-    {
+    public List<NationalProject> findAllByName(@RequestParam String name) {
         return this.nationalProjectService.findByName(name);
     }
 
@@ -74,7 +69,7 @@ public class NationalProjectController {
 
     @PutMapping("/edit/{id}")
     public ResponseEntity<NationalProject> edit(@PathVariable Long id, @RequestBody NationalProjectDto nationalProjectDto) {
-        return this.nationalProjectService.editNationalProject(id,nationalProjectDto)
+        return this.nationalProjectService.editNationalProject(id, nationalProjectDto)
                 .map(project -> ResponseEntity.ok().body(project))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }

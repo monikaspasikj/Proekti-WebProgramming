@@ -52,4 +52,14 @@ public class TeacherServiceImpl implements TeacherService {
         return Optional.of(this.teacherRepository.save(teacher));
     }
 
+    @Override
+    public List<Teacher> findByName(String name) {
+        return teacherRepository.findAllByName(name);
+    }
+
+    @Override
+    public List<Teacher> findBySurname(String surname) {
+        return teacherRepository.findAllBySurname(surname);
+    }
+
 }

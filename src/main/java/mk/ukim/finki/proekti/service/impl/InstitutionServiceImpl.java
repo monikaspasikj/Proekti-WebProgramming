@@ -48,4 +48,14 @@ public class InstitutionServiceImpl implements InstitutionService {
         return Optional.of(this.institutionRepository.save(institution));
     }
 
+    @Override
+    public List<Institution> findByLocation(String location) {
+        return institutionRepository.findByLocation(location);
+    }
+
+    @Override
+    public Institution findByName(String name) {
+        return institutionRepository.findByName(name);
+    }
+
 }

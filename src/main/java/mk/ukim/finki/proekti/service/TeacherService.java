@@ -17,4 +17,8 @@ public interface TeacherService {
     Optional<Teacher> addTeacher(TeacherDto teacherDto);
 
     Optional<Teacher> editTeacher(Long id, TeacherDto teacherDto);
+
+    List<Teacher> findByName(String name);
+
+    List<Teacher> findBySurname(String surname);
 }

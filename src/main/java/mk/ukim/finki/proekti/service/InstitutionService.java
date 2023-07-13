@@ -17,4 +17,8 @@ public interface InstitutionService {
 
     Optional<Institution> editInstitution(Long id, InstitutionDto institutionDto);
 
+    List<Institution> findByLocation(String location);
+
+    Institution findByName(String name);
+
 }

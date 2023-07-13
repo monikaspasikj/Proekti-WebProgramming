@@ -1,15 +1,12 @@
 package mk.ukim.finki.proekti.controller;
 
-import jakarta.persistence.Enumerated;
 import mk.ukim.finki.proekti.models.DTO.TeacherDto;
 import mk.ukim.finki.proekti.models.Teacher;
-import mk.ukim.finki.proekti.models.enumerations.TypeTeacher;
 import mk.ukim.finki.proekti.service.TeacherService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/projects/teachers")
@@ -52,5 +49,17 @@ public class TeacherController {
         return this.teacherService.editTeacher(id, teacherDto)
                 .map(teacher -> ResponseEntity.ok().body(teacher))
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/byName")
+    public List<Teacher> findTeachersByName(@RequestParam String name)
+    {
+        return teacherService.findByName(name);
+    }
+
+    @GetMapping("/bySurname")
+    public List<Teacher> findTeachersBySurname(@RequestParam String surname)
+    {
+        return teacherService.findBySurname(surname);
     }
 }

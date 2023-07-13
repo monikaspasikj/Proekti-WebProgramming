@@ -4,8 +4,10 @@ import mk.ukim.finki.proekti.models.Teacher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface TeacherRepository extends JpaRepository<Teacher, Long> {
-    String findAllByName(String name);
-    String findAllBySurname(String surname);
+    List<Teacher> findAllByName(String name);
+    List<Teacher> findAllBySurname(String surname);
 }
