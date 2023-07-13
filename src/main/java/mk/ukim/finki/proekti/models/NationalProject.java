@@ -29,9 +29,9 @@ public class NationalProject {
     @OneToOne
     Teacher manager;
     @OneToOne
-    Povik povik;
+    Call call;
 
-    public NationalProject(String name, LocalDate dateEntry, TypeStatus typeStatus, String keyWords, String summary, String benefits, List<Teacher> members, Teacher manager, Povik povik) {
+    public NationalProject(String name, LocalDate dateEntry, TypeStatus typeStatus, String keyWords, String summary, String benefits, List<Teacher> members, Teacher manager, Call call) {
         this.name = name;
         this.dateEntry = dateEntry;
         this.typeStatus = typeStatus;
@@ -40,7 +40,7 @@ public class NationalProject {
         this.benefits = benefits;
         this.members = members;
         this.manager = manager;
-        this.povik = povik;
+        this.call = call;
     }
 
     public NationalProject() {

@@ -1,12 +1,6 @@
 package mk.ukim.finki.proekti.models.DTO;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.Data;
-import mk.ukim.finki.proekti.models.Povik;
-import mk.ukim.finki.proekti.models.Teacher;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
 import org.springframework.format.annotation.DateTimeFormat;
 

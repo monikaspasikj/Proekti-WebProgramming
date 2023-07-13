@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/projects/nationalprojects")
+@RequestMapping("/api/projects/national")
 public class NationalProjectController {
 
 
@@ -36,7 +36,7 @@ public class NationalProjectController {
 
     @PostMapping("/filter")
     public List<NationalProject> findAllByPovikorStatus(@RequestParam(required = false) Long povik, @RequestParam(required = false) TypeStatus typeStatus) {
-        return this.nationalProjectService.findByPovikorStatus(povik, typeStatus);
+        return this.nationalProjectService.findByCallOrStatus(povik, typeStatus);
     }
 
     @PostMapping("/filterByKeyword")
@@ -50,7 +50,7 @@ public class NationalProjectController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity deleteNationalProject(@PathVariable Long id) {
+    public ResponseEntity<NationalProject> deleteNationalProject(@PathVariable Long id) {
         this.nationalProjectService.delete(id);
         if (this.nationalProjectService.findById(id).isEmpty())
             return ResponseEntity.ok().build();

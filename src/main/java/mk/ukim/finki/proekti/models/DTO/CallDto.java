@@ -13,7 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 
 @Data
-public class PovikDto {
+public class CallDto {
 
     String name;
     String acronym;
@@ -28,7 +28,7 @@ public class PovikDto {
 
     TypeStatus typeStatus;
 
-    public PovikDto(String name,String acronym, LocalDate endDate, TypePovik typePovik, Long institution, TypeStatus typeStatus) {
+    public CallDto(String name, String acronym, LocalDate endDate, TypePovik typePovik, Long institution, TypeStatus typeStatus) {
         this.name=name;
         this.acronym = acronym;
         this.endDate = endDate;

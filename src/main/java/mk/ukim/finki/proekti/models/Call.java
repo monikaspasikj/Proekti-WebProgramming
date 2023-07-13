@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-public class Povik {
+public class Call {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long id;
@@ -27,7 +27,7 @@ public class Povik {
     @Enumerated(EnumType.STRING)
     TypeStatus typeStatus;
 
-    public Povik(String name,String acronym, LocalDate endDate, TypePovik typePovik, Institution institution, TypeStatus typeStatus) {
+    public Call(String name, String acronym, LocalDate endDate, TypePovik typePovik, Institution institution, TypeStatus typeStatus) {
         this.name=name;
         this.acronym = acronym;
         this.endDate = endDate;
@@ -36,7 +36,7 @@ public class Povik {
         this.typeStatus =  typeStatus;
     }
 
-    public Povik() {
+    public Call() {
 
     }
 }

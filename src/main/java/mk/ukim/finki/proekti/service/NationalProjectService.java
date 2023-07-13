@@ -12,7 +12,7 @@ public interface NationalProjectService {
 
     Optional<NationalProject> findById(Long id);
 
-    List<NationalProject> findByPovikorStatus(Long povik, TypeStatus status);
+    List<NationalProject> findByCallOrStatus(Long povik, TypeStatus status);
 
     List<NationalProject> findByName(String name);
 
