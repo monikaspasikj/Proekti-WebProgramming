@@ -52,14 +52,12 @@ public class TeacherController {
     }
 
     @GetMapping("/byName")
-    public List<Teacher> findTeachersByName(@RequestParam String name)
-    {
+    public List<Teacher> findTeachersByName(@RequestParam String name) {
         return teacherService.findByName(name);
     }
 
     @GetMapping("/bySurname")
-    public List<Teacher> findTeachersBySurname(@RequestParam String surname)
-    {
+    public List<Teacher> findTeachersBySurname(@RequestParam String surname) {
         return teacherService.findBySurname(surname);
     }
 }

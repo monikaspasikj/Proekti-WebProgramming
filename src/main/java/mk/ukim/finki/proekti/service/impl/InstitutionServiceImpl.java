@@ -36,13 +36,13 @@ public class InstitutionServiceImpl implements InstitutionService {
 
     @Override
     public Optional<Institution> addInstitution(InstitutionDto institutionDto) {
-        Institution institution= new Institution(institutionDto.getName(), institutionDto.getLocation());
-        return  Optional.of(this.institutionRepository.save(institution));
+        Institution institution = new Institution(institutionDto.getName(), institutionDto.getLocation());
+        return Optional.of(this.institutionRepository.save(institution));
     }
 
     @Override
     public Optional<Institution> editInstitution(Long id, InstitutionDto institutionDto) {
-        Institution institution=this.findById(id).orElseThrow(InstitutionNotFoundException::new);
+        Institution institution = this.findById(id).orElseThrow(InstitutionNotFoundException::new);
         institution.setName(institutionDto.getName());
         institution.setLocation(institutionDto.getLocation());
         return Optional.of(this.institutionRepository.save(institution));

@@ -3,8 +3,6 @@ package mk.ukim.finki.proekti.controller;
 
 import mk.ukim.finki.proekti.models.DTO.PovikDto;
 import mk.ukim.finki.proekti.models.Povik;
-import mk.ukim.finki.proekti.models.Teacher;
-import mk.ukim.finki.proekti.models.enumerations.TypeTeacher;
 import mk.ukim.finki.proekti.service.PovikService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -49,7 +47,7 @@ public class PovikController {
 
     @PutMapping("/edit/{id}")
     public ResponseEntity<Povik> edit(@PathVariable Long id, @RequestBody PovikDto povikDto) {
-        return this.povikService.editPovik(id,povikDto)
+        return this.povikService.editPovik(id, povikDto)
                 .map(povik -> ResponseEntity.ok().body(povik))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }

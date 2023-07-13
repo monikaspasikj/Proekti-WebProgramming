@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/projects/institutions")
@@ -53,14 +52,12 @@ public class InstitutionController {
     }
 
     @GetMapping("/byLocation")
-    public List<Institution> getAllByLocation(String location)
-    {
+    public List<Institution> getAllByLocation(String location) {
         return institutionService.findByLocation(location);
     }
 
     @GetMapping("/byName")
-    public Institution findByName(String name)
-    {
+    public Institution findByName(String name) {
         return institutionService.findByName(name);
     }
 }

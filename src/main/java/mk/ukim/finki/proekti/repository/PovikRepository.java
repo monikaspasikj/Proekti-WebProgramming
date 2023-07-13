@@ -4,7 +4,9 @@ import mk.ukim.finki.proekti.models.Povik;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface PovikRepository extends JpaRepository<Povik, Long> {
-    String findAllByAcronym(String acronym);
+    List<Povik> findAllByAcronym(String acronym);
 }

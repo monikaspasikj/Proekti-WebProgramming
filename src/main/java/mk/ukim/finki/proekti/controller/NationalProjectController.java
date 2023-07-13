@@ -1,12 +1,9 @@
 package mk.ukim.finki.proekti.controller;
 
 import mk.ukim.finki.proekti.models.DTO.NationalProjectDto;
-import mk.ukim.finki.proekti.models.DTO.PovikDto;
 import mk.ukim.finki.proekti.models.NationalProject;
-import mk.ukim.finki.proekti.models.Povik;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
 import mk.ukim.finki.proekti.service.NationalProjectService;
-import mk.ukim.finki.proekti.service.PovikService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

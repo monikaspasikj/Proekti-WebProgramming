@@ -2,7 +2,6 @@ package mk.ukim.finki.proekti.service;
 
 import mk.ukim.finki.proekti.models.DTO.TeacherDto;
 import mk.ukim.finki.proekti.models.Teacher;
-import mk.ukim.finki.proekti.models.enumerations.TypeTeacher;
 
 import java.util.List;
 import java.util.Optional;

@@ -32,19 +32,19 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public void delete(Long id) {
-        Teacher teacher=this.findById(id).orElseThrow(TeacherNotFoundException::new);
+        Teacher teacher = this.findById(id).orElseThrow(TeacherNotFoundException::new);
         this.teacherRepository.delete(teacher);
     }
 
     @Override
     public Optional<Teacher> addTeacher(TeacherDto teacherDto) {
-        Teacher teacher=new Teacher(teacherDto.getName(), teacherDto.getSurname(), teacherDto.getEmail(), teacherDto.getTypeTeacher());
-        return  Optional.of(this.teacherRepository.save(teacher));
+        Teacher teacher = new Teacher(teacherDto.getName(), teacherDto.getSurname(), teacherDto.getEmail(), teacherDto.getTypeTeacher());
+        return Optional.of(this.teacherRepository.save(teacher));
     }
 
     @Override
     public Optional<Teacher> editTeacher(Long id, TeacherDto teacherDto) {
-        Teacher teacher=this.findById(id).orElseThrow(TeacherNotFoundException::new);
+        Teacher teacher = this.findById(id).orElseThrow(TeacherNotFoundException::new);
         teacher.setName(teacherDto.getName());
         teacher.setSurname(teacherDto.getSurname());
         teacher.setEmail(teacherDto.getEmail());

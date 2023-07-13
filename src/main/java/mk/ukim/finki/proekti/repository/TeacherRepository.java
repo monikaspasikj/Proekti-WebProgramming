@@ -8,6 +8,8 @@ import java.util.List;
 
 @Repository
 public interface TeacherRepository extends JpaRepository<Teacher, Long> {
+
     List<Teacher> findAllByName(String name);
+
     List<Teacher> findAllBySurname(String surname);
 }

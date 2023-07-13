@@ -39,22 +39,22 @@ public class PovikServiceImpl implements PovikService {
 
     @Override
     public void delete(Long id) {
-        Povik povik=this.findById(id).orElseThrow(PovikNotFoundException::new);
+        Povik povik = this.findById(id).orElseThrow(PovikNotFoundException::new);
         this.povikRepository.delete(povik);
     }
 
     @Override
     public Optional<Povik> addPovik(PovikDto povikDto) {
-        Institution institution=this.institutionService.findById(povikDto.getInstitution()).orElseThrow(InstitutionNotFoundException::new);
-        Povik povik=new Povik(povikDto.getName(),povikDto.getAcronym(),povikDto.getEndDate(),povikDto.getTypePovik(),institution,povikDto.getTypeStatus());
+        Institution institution = this.institutionService.findById(povikDto.getInstitution()).orElseThrow(InstitutionNotFoundException::new);
+        Povik povik = new Povik(povikDto.getName(), povikDto.getAcronym(), povikDto.getEndDate(), povikDto.getTypePovik(), institution, povikDto.getTypeStatus());
         return Optional.of(this.povikRepository.save(povik));
 
     }
 
     @Override
     public Optional<Povik> editPovik(Long id, PovikDto povikDto) {
-        Povik povik=this.findById(id).orElseThrow(PovikNotFoundException::new);
-        Institution institution=this.institutionService.findById(povikDto.getInstitution()).orElseThrow(InstitutionNotFoundException::new);
+        Povik povik = this.findById(id).orElseThrow(PovikNotFoundException::new);
+        Institution institution = this.institutionService.findById(povikDto.getInstitution()).orElseThrow(InstitutionNotFoundException::new);
 
 
         povik.setName(povikDto.getName());

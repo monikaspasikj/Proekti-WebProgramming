@@ -2,8 +2,6 @@ package mk.ukim.finki.proekti.service;
 
 import mk.ukim.finki.proekti.models.DTO.PovikDto;
 import mk.ukim.finki.proekti.models.Povik;
-import mk.ukim.finki.proekti.models.Teacher;
-import mk.ukim.finki.proekti.models.enumerations.TypeTeacher;
 
 import java.util.List;
 import java.util.Optional;
