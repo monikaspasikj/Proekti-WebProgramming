@@ -25,6 +25,7 @@ public class InternationalProjectDto {
     private Institution anotherInstitution;
     private Institution carrier;
     private Institution partners;
+    private Boolean approved;
 
     public InternationalProjectDto(String name, LocalDate dateEntry, TypeStatus typeStatus, String description, String type, String goals, LocalDate startDate, LocalDate endDate, Institution primaryInstitution, Institution anotherInstitution, Institution carrier, Institution partners) {
         this.name = name;
@@ -39,6 +40,7 @@ public class InternationalProjectDto {
         this.anotherInstitution = anotherInstitution;
         this.carrier = carrier;
         this.partners = partners;
+        this.approved = false;
     }
 
 }

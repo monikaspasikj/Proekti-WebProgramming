@@ -12,5 +12,5 @@ public interface InternationalProjectRepository extends JpaRepository<Internatio
     List<InternationalProject> findAllByName(String name);
     List<InternationalProject> findByTypeStatus(TypeStatus typeStatus);
     List<InternationalProject> findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(String name, String description);
-
+    List<InternationalProject> findByApprovedIsTrue();
 }

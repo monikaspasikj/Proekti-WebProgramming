@@ -108,4 +108,15 @@ public class InternationalProjectServiceImpl implements InternationalProjectServ
         }
         return Optional.empty();
     }
+
+    @Override
+    public List<InternationalProject> findAllApproved() {
+        return projectRepository.findByApprovedIsTrue();
+    }
+
+   //TODO
+    @Override
+    public Optional<InternationalProject> makeApproved(Long id) {
+        return Optional.empty();
+    }
 }

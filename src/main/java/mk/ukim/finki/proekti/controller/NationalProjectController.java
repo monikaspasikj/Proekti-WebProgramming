@@ -1,6 +1,7 @@
 package mk.ukim.finki.proekti.controller;
 
 import mk.ukim.finki.proekti.models.DTO.NationalProjectDto;
+import mk.ukim.finki.proekti.models.InternationalProject;
 import mk.ukim.finki.proekti.models.NationalProject;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
 import mk.ukim.finki.proekti.service.NationalProjectService;
@@ -35,7 +36,7 @@ public class NationalProjectController {
     }
 
     @PostMapping("/filter")
-    public List<NationalProject> findAllByCallorStatus(@RequestParam(required = false) Long povik, @RequestParam(required = false) TypeStatus typeStatus) {
+    public List<NationalProject> findAllByPovikorStatus(@RequestParam(required = false) Long povik, @RequestParam(required = false) TypeStatus typeStatus) {
         return this.nationalProjectService.findByCallOrStatus(povik, typeStatus);
     }
 
@@ -69,5 +70,11 @@ public class NationalProjectController {
         return this.nationalProjectService.editNationalProject(id, nationalProjectDto)
                 .map(project -> ResponseEntity.ok().body(project))
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/approved")
+    public List<NationalProject> findAllApproved()
+    {
+        return nationalProjectService.findAllApproved();
     }
 }

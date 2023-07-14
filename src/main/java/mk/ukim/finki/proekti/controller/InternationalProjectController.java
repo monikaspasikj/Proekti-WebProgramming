@@ -66,4 +66,10 @@ public class InternationalProjectController {
                 .map(project -> ResponseEntity.ok().body(project))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @GetMapping("/approved")
+    public List<InternationalProject> findAllApproved()
+    {
+        return internationalProjectService.findAllApproved();
+    }
 }

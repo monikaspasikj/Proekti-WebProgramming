@@ -23,4 +23,8 @@ public interface NationalProjectService {
     Optional<NationalProject> addNationalProject(NationalProjectDto nationalProjectDto);
 
     Optional<NationalProject> editNationalProject(Long id, NationalProjectDto nationalProjectDto);
+
+    List<NationalProject> findAllApproved();
+
+    Optional<NationalProject> makeApproved(Long id);
 }

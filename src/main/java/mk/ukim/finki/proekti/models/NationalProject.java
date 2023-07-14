@@ -30,6 +30,7 @@ public class NationalProject {
     Teacher manager;
     @OneToOne
     Call call;
+    Boolean approved;
 
     public NationalProject(String name, LocalDate dateEntry, TypeStatus typeStatus, String keyWords, String summary, String benefits, List<Teacher> members, Teacher manager, Call call) {
         this.name = name;
@@ -41,6 +42,7 @@ public class NationalProject {
         this.members = members;
         this.manager = manager;
         this.call = call;
+        this.approved = false;
     }
 
     public NationalProject() {

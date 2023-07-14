@@ -34,6 +34,7 @@ public class InternationalProject {
     Institution carrier;
     @OneToOne
     Institution partners;
+    Boolean approved;
 
     public InternationalProject(String name, LocalDate dateEntry, TypeStatus typeStatus, String description, String type, String goals, LocalDate startDate, LocalDate endDate, Institution primaryInstitution, Institution anotherInstitution, Institution carrier, Institution partners) {
         this.name = name;
@@ -48,6 +49,7 @@ public class InternationalProject {
         this.anotherInstitution = anotherInstitution;
         this.carrier = carrier;
         this.partners = partners;
+        this.approved = false;
     }
 
     public InternationalProject() {

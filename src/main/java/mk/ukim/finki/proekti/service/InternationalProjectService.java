@@ -2,6 +2,7 @@ package mk.ukim.finki.proekti.service;
 
 import mk.ukim.finki.proekti.models.DTO.InternationalProjectDto;
 import mk.ukim.finki.proekti.models.InternationalProject;
+import mk.ukim.finki.proekti.models.NationalProject;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
 
 import java.util.List;
@@ -23,4 +24,9 @@ public interface InternationalProjectService {
     Optional<InternationalProject> addInternationalProject(InternationalProjectDto internationalProjectDTO);
 
     Optional<InternationalProject> editInternationalProject(Long id, InternationalProjectDto internationalProjectDTO);
+
+    List<InternationalProject> findAllApproved();
+
+    Optional<InternationalProject> makeApproved(Long id);
+
 }

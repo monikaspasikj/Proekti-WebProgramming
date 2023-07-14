@@ -80,7 +80,7 @@ public class NationalProjectServiceImpl implements NationalProjectService {
     @Override
     public Optional<NationalProject> addNationalProject(NationalProjectDto nationalProjectDto) {
         Teacher manager = this.teacherRepository.findById(nationalProjectDto.getManager()).orElseThrow(TeacherNotFoundException::new);
-        Call call = this.callService.findById(nationalProjectDto.getPovik()).orElseThrow(CallNotFoundException::new);
+        Call call = this.callService.findById(nationalProjectDto.getCallId()).orElseThrow(CallNotFoundException::new);
         List<Teacher> members = this.teacherRepository.findAllById(nationalProjectDto.getMembers());
 
         NationalProject nationalProject = new NationalProject(nationalProjectDto.getName(),
@@ -94,7 +94,7 @@ public class NationalProjectServiceImpl implements NationalProjectService {
     @Override
     public Optional<NationalProject> editNationalProject(Long id, NationalProjectDto nationalProjectDto) {
         Teacher manager = this.teacherRepository.findById(nationalProjectDto.getManager()).orElseThrow(TeacherNotFoundException::new);
-        Call call = this.callService.findById(nationalProjectDto.getPovik()).orElseThrow(CallNotFoundException::new);
+        Call call = this.callService.findById(nationalProjectDto.getCallId()).orElseThrow(CallNotFoundException::new);
         List<Teacher> members = this.teacherRepository.findAllById(nationalProjectDto.getMembers());
 
         NationalProject nationalProject = this.findById(id).orElseThrow(NationalProjectNotFoundException::new);
@@ -109,6 +109,17 @@ public class NationalProjectServiceImpl implements NationalProjectService {
         nationalProject.setCall(call);
 
         return Optional.of(this.nationalProjectRepository.save(nationalProject));
+    }
+
+    @Override
+    public List<NationalProject> findAllApproved() {
+        return nationalProjectRepository.findByApprovedIsTrue();
+    }
+
+    //TODO
+    @Override
+    public Optional<NationalProject> makeApproved(Long id) {
+        return Optional.empty();
     }
 
 

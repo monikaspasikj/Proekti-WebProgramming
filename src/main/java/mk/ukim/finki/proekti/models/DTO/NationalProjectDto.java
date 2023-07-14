@@ -9,23 +9,19 @@ import java.util.List;
 
 @Data
 public class NationalProjectDto {
-    String name;
+    private String name;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
-    LocalDate dateEntry;
+    private LocalDate dateEntry;
+    private TypeStatus typeStatus;
+    private String keyWords;
+    private String summary;
+    private String benefits;
+    private List<Long> members;
+    private Long manager;
+    private Long callId;
+    private Boolean approved;
 
-    TypeStatus typeStatus;
-    String keyWords;
-    String summary;
-    String benefits;
-
-
-    List<Long> members;
-
-    Long manager;
-
-    Long povik;
-
-    public NationalProjectDto(String name, LocalDate dateEntry, TypeStatus typeStatus, String keyWords, String summary, String benefits, List<Long> members, Long manager, Long povik) {
+    public NationalProjectDto(String name, LocalDate dateEntry, TypeStatus typeStatus, String keyWords, String summary, String benefits, List<Long> members, Long manager, Long callId) {
         this.name = name;
         this.dateEntry = dateEntry;
         this.typeStatus = typeStatus;
@@ -34,6 +30,7 @@ public class NationalProjectDto {
         this.benefits = benefits;
         this.members = members;
         this.manager = manager;
-        this.povik = povik;
+        this.callId = callId;
+        this.approved = false;
     }
 }
