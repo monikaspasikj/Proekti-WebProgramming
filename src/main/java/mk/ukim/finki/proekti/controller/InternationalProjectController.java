@@ -30,7 +30,7 @@ public class InternationalProjectController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/filter")
+    @PostMapping("/filterByType")
     public List<InternationalProject> findAllByTypeStatus(@RequestParam(required = false) TypeStatus typeStatus) {
         return internationalProjectService.findByTypeStatus(typeStatus);
     }

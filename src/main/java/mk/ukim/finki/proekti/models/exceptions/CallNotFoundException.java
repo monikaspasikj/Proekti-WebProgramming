@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class CallNotFoundException extends RuntimeException{
 
     public CallNotFoundException() {
-        super("Povik not found!");
+        super("Call not found!");
     }
 }
