@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Entity
 public class InternationalProject {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
     @DateTimeFormat(pattern = "dd-MM-yyyy")

@@ -35,9 +35,9 @@ public class NationalProjectController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/filter")
-    public List<NationalProject> findAllByPovikorStatus(@RequestParam(required = false) Long povik, @RequestParam(required = false) TypeStatus typeStatus) {
-        return this.nationalProjectService.findByCallOrStatus(povik, typeStatus);
+    @PostMapping("/filterByCallOrStatus")
+    public List<NationalProject> findAllByCallOrStatus(@RequestParam(required = false) Long callId, @RequestParam(required = false) TypeStatus typeStatus) {
+        return this.nationalProjectService.findByCallOrStatus(callId, typeStatus);
     }
 
     @PostMapping("/filterByKeyword")
@@ -45,7 +45,7 @@ public class NationalProjectController {
         return this.nationalProjectService.findByKeyWord(keyword);
     }
 
-    @PostMapping("/search")
+    @PostMapping("/searchByName")
     public List<NationalProject> findAllByName(@RequestParam String name) {
         return this.nationalProjectService.findByName(name);
     }
@@ -73,8 +73,7 @@ public class NationalProjectController {
     }
 
     @GetMapping("/approved")
-    public List<NationalProject> findAllApproved()
-    {
+    public List<NationalProject> findAllApproved() {
         return nationalProjectService.findAllApproved();
     }
 }

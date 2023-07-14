@@ -42,12 +42,12 @@ public class NationalProjectServiceImpl implements NationalProjectService {
     }
 
     @Override
-    public List<NationalProject> findByCallOrStatus(Long call, TypeStatus status) {
-        Call p = this.callService.findById(call).orElseThrow(CallNotFoundException::new);
-        if (call == null && status == null)
+    public List<NationalProject> findByCallOrStatus(Long callId, TypeStatus status) {
+        Call p = this.callService.findById(callId).orElseThrow(CallNotFoundException::new);
+        if (callId == null && status == null)
             return this.findAll();
 
-        if (call == null)
+        if (callId == null)
             return this.findAll().stream().filter(project -> project.getTypeStatus().equals(status)).toList();
         else if (status == null)
             return this.findAll().stream().filter(project -> project.getCall().equals(p)).toList();

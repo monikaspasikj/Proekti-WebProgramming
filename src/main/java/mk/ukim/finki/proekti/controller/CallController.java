@@ -40,14 +40,14 @@ public class CallController {
 
     @PostMapping("/add")
     public ResponseEntity<Call> addCall(@RequestBody CallDto callDto) {
-        return this.callService.addPovik(callDto)
+        return this.callService.addCall(callDto)
                 .map(call -> ResponseEntity.ok().body(call))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping("/edit/{id}")
     public ResponseEntity<Call> editCall(@PathVariable Long id, @RequestBody CallDto callDto) {
-        return this.callService.editPovik(id, callDto)
+        return this.callService.editCall(id, callDto)
                 .map(call -> ResponseEntity.ok().body(call))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }

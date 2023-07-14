@@ -8,12 +8,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.List;
+
 @Data
 @Entity
 public class NationalProject {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
@@ -23,7 +24,6 @@ public class NationalProject {
     String keyWords;
     String summary;
     String benefits;
-
     @OneToMany
     List<Teacher> members;
     @OneToOne

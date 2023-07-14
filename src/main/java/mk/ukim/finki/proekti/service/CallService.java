@@ -13,7 +13,7 @@ public interface CallService {
 
     void delete(Long id);
 
-    Optional<Call> addPovik(CallDto callDto);
+    Optional<Call> addCall(CallDto callDto);
 
-    Optional<Call> editPovik(Long id, CallDto callDto);
+    Optional<Call> editCall(Long id, CallDto callDto);
 }

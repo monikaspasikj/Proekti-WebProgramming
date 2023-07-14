@@ -8,5 +8,4 @@ import java.util.List;
 
 @Repository
 public interface CallRepository extends JpaRepository<Call, Long> {
-    List<Call> findAllByAcronym(String acronym);
 }

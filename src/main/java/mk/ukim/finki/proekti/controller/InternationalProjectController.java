@@ -40,7 +40,7 @@ public class InternationalProjectController {
         return internationalProjectService.findByKeyword(keyword);
     }
 
-    @PostMapping("/search")
+    @PostMapping("/searchByName")
     public List<InternationalProject> findAllByName(@RequestParam String name) {
         return internationalProjectService.findByName(name);
     }
@@ -68,8 +68,7 @@ public class InternationalProjectController {
     }
 
     @GetMapping("/approved")
-    public List<InternationalProject> findAllApproved()
-    {
+    public List<InternationalProject> findAllApproved() {
         return internationalProjectService.findAllApproved();
     }
 }

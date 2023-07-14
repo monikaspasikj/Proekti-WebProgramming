@@ -4,8 +4,6 @@ import mk.ukim.finki.proekti.models.DTO.InternationalProjectDto;
 import mk.ukim.finki.proekti.models.Institution;
 import mk.ukim.finki.proekti.models.InternationalProject;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
-import mk.ukim.finki.proekti.models.exceptions.InstitutionNotFoundException;
-import mk.ukim.finki.proekti.repository.InstitutionRepository;
 import mk.ukim.finki.proekti.repository.InternationalProjectRepository;
 import mk.ukim.finki.proekti.service.InternationalProjectService;
 import org.springframework.stereotype.Service;
@@ -18,11 +16,9 @@ public class InternationalProjectServiceImpl implements InternationalProjectServ
 
 
     private final InternationalProjectRepository projectRepository;
-    private final InstitutionRepository institutionRepository;
 
-    public InternationalProjectServiceImpl(InternationalProjectRepository projectRepository, InstitutionRepository institutionRepository) {
+    public InternationalProjectServiceImpl(InternationalProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
-        this.institutionRepository = institutionRepository;
     }
 
     @Override

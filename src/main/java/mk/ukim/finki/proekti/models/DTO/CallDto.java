@@ -17,23 +17,18 @@ public class CallDto {
 
     String name;
     String acronym;
-
-
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     LocalDate endDate;
-
-    TypeCall typePovik;
-
-    Long institution;
-
+    TypeCall typeCall;
+    Long institutionId;
     TypeStatus typeStatus;
 
-    public CallDto(String name, String acronym, LocalDate endDate, TypeCall typePovik, Long institution, TypeStatus typeStatus) {
-        this.name=name;
+    public CallDto(String name, String acronym, LocalDate endDate, TypeCall typeCall, Long institutionId, TypeStatus typeStatus) {
+        this.name = name;
         this.acronym = acronym;
         this.endDate = endDate;
-        this.typePovik = typePovik;
-        this.institution = institution;
+        this.typeCall = typeCall;
+        this.institutionId = institutionId;
         this.typeStatus = typeStatus;
     }
 }

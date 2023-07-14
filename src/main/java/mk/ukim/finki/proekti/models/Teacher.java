@@ -1,15 +1,15 @@
 package mk.ukim.finki.proekti.models;
 
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 import mk.ukim.finki.proekti.models.enumerations.TypeTeacher;
+
 @Data
 @Entity
 public class Teacher {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
     String surname;

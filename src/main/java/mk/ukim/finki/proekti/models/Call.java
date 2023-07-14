@@ -13,27 +13,26 @@ import java.time.LocalDate;
 @Entity
 public class Call {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
     String name;
     String acronym;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     LocalDate endDate;
     @Enumerated(EnumType.STRING)
-    TypeCall typePovik;
+    TypeCall typeCall;
     @OneToOne
     Institution institution;
     @Enumerated(EnumType.STRING)
     TypeStatus typeStatus;
 
-    public Call(String name, String acronym, LocalDate endDate, TypeCall typePovik, Institution institution, TypeStatus typeStatus) {
-        this.name=name;
+    public Call(String name, String acronym, LocalDate endDate, TypeCall typeCall, Institution institution, TypeStatus typeStatus) {
+        this.name = name;
         this.acronym = acronym;
         this.endDate = endDate;
-        this.typePovik = typePovik;
+        this.typeCall = typeCall;
         this.institution = institution;
-        this.typeStatus =  typeStatus;
+        this.typeStatus = typeStatus;
     }
 
     public Call() {

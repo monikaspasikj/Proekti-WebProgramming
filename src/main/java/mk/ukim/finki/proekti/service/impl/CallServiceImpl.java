@@ -44,22 +44,22 @@ public class CallServiceImpl implements CallService {
     }
 
     @Override
-    public Optional<Call> addPovik(CallDto callDto) {
-        Institution institution = this.institutionService.findById(callDto.getInstitution()).orElseThrow(InstitutionNotFoundException::new);
-        Call call = new Call(callDto.getName(), callDto.getAcronym(), callDto.getEndDate(), callDto.getTypePovik(), institution, callDto.getTypeStatus());
+    public Optional<Call> addCall(CallDto callDto) {
+        Institution institution = this.institutionService.findById(callDto.getInstitutionId()).orElseThrow(InstitutionNotFoundException::new);
+        Call call = new Call(callDto.getName(), callDto.getAcronym(), callDto.getEndDate(), callDto.getTypeCall(), institution, callDto.getTypeStatus());
         return Optional.of(this.callRepository.save(call));
 
     }
 
     @Override
-    public Optional<Call> editPovik(Long id, CallDto callDto) {
+    public Optional<Call> editCall(Long id, CallDto callDto) {
         Call call = this.findById(id).orElseThrow(CallNotFoundException::new);
-        Institution institution = this.institutionService.findById(callDto.getInstitution()).orElseThrow(InstitutionNotFoundException::new);
+        Institution institution = this.institutionService.findById(callDto.getInstitutionId()).orElseThrow(InstitutionNotFoundException::new);
 
 
         call.setName(callDto.getName());
         call.setAcronym(callDto.getAcronym());
-        call.setTypePovik(callDto.getTypePovik());
+        call.setTypeStatus(callDto.getTypeStatus());
         call.setInstitution(institution);
         call.setEndDate(callDto.getEndDate());
         call.setTypeStatus(callDto.getTypeStatus());

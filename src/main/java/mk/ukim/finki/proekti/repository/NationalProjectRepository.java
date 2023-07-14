@@ -12,5 +12,6 @@ public interface NationalProjectRepository extends JpaRepository<NationalProject
     List<NationalProject> findAllByNameContainingIgnoreCase(String name);
 
     List<NationalProject> findAllByKeyWordsContainingIgnoreCase(String words);
+
     List<NationalProject> findByApprovedIsTrue();
 }
