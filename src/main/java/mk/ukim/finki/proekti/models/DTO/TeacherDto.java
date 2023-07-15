@@ -1,7 +1,6 @@
 package mk.ukim.finki.proekti.models.DTO;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+
 import lombok.Data;
 import mk.ukim.finki.proekti.models.enumerations.TypeTeacher;
 

@@ -1,11 +1,7 @@
 package mk.ukim.finki.proekti.models.DTO;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToOne;
+
 import lombok.Data;
-import mk.ukim.finki.proekti.models.Institution;
 import mk.ukim.finki.proekti.models.enumerations.TypeCall;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
 import org.springframework.format.annotation.DateTimeFormat;

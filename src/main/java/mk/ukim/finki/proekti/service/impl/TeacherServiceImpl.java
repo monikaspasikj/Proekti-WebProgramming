@@ -2,7 +2,6 @@ package mk.ukim.finki.proekti.service.impl;
 
 import mk.ukim.finki.proekti.models.DTO.TeacherDto;
 import mk.ukim.finki.proekti.models.Teacher;
-import mk.ukim.finki.proekti.models.enumerations.TypeTeacher;
 import mk.ukim.finki.proekti.models.exceptions.TeacherNotFoundException;
 import mk.ukim.finki.proekti.repository.TeacherRepository;
 import mk.ukim.finki.proekti.service.TeacherService;

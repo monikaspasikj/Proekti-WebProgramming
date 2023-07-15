@@ -1,7 +1,6 @@
 package mk.ukim.finki.proekti.controller;
 
 import mk.ukim.finki.proekti.models.DTO.NationalProjectDto;
-import mk.ukim.finki.proekti.models.InternationalProject;
 import mk.ukim.finki.proekti.models.NationalProject;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
 import mk.ukim.finki.proekti.service.NationalProjectService;
@@ -79,8 +78,7 @@ public class NationalProjectController {
     }
 
     @PostMapping("/approve/{id}")
-    public ResponseEntity<NationalProject> approveProject(@PathVariable Long id)
-    {
+    public ResponseEntity<NationalProject> approveProject(@PathVariable Long id) {
         return this.nationalProjectService.makeApproved(id).map(project -> ResponseEntity.ok().body(project))
                 .orElseGet(() -> ResponseEntity.badRequest().build());
     }

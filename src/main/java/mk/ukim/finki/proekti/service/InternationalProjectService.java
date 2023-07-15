@@ -2,7 +2,6 @@ package mk.ukim.finki.proekti.service;
 
 import mk.ukim.finki.proekti.models.DTO.InternationalProjectDto;
 import mk.ukim.finki.proekti.models.InternationalProject;
-import mk.ukim.finki.proekti.models.NationalProject;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
 
 import java.util.List;

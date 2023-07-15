@@ -73,8 +73,7 @@ public class InternationalProjectController {
     }
 
     @PostMapping("/approve/{id}")
-    public ResponseEntity<InternationalProject> approveProject(@PathVariable Long id)
-    {
+    public ResponseEntity<InternationalProject> approveProject(@PathVariable Long id) {
         return this.internationalProjectService.makeApproved(id).map(project -> ResponseEntity.ok().body(project))
                 .orElseGet(() -> ResponseEntity.badRequest().build());
     }

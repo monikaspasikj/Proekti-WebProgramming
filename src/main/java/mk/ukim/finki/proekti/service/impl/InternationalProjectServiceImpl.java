@@ -113,8 +113,8 @@ public class InternationalProjectServiceImpl implements InternationalProjectServ
 
     @Override
     public Optional<InternationalProject> makeApproved(Long id) {
-       InternationalProject project=this.projectRepository.findById(id).orElseThrow(InternationalProjectNotFoundException::new);
-        if(project.getApproved().equals(false))
+        InternationalProject project = this.projectRepository.findById(id).orElseThrow(InternationalProjectNotFoundException::new);
+        if (project.getApproved().equals(false))
             project.setApproved(true);
         return Optional.of(project);
     }
