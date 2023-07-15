@@ -21,7 +21,7 @@ public class NationalProjectDto {
     private List<Long> members;
     private Long manager;
     private Long callId;
-    private Boolean approved;
+
 
     public NationalProjectDto(String name, LocalDate dateEntry, TypeStatus typeStatus, String keyWords, String summary, String benefits, List<Long> members, Long manager, Long callId) {
         this.name = name;
@@ -33,6 +33,5 @@ public class NationalProjectDto {
         this.members = members;
         this.manager = manager;
         this.callId = callId;
-        this.approved = false;
     }
 }

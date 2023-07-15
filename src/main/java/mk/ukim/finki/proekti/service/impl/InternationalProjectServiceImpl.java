@@ -4,6 +4,7 @@ import mk.ukim.finki.proekti.models.DTO.InternationalProjectDto;
 import mk.ukim.finki.proekti.models.Institution;
 import mk.ukim.finki.proekti.models.InternationalProject;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
+import mk.ukim.finki.proekti.models.exceptions.InternationalProjectNotFoundException;
 import mk.ukim.finki.proekti.repository.InternationalProjectRepository;
 import mk.ukim.finki.proekti.service.InternationalProjectService;
 import org.springframework.stereotype.Service;
@@ -110,9 +111,11 @@ public class InternationalProjectServiceImpl implements InternationalProjectServ
         return projectRepository.findByApprovedIsTrue();
     }
 
-   //TODO
     @Override
     public Optional<InternationalProject> makeApproved(Long id) {
-        return Optional.empty();
+       InternationalProject project=this.projectRepository.findById(id).orElseThrow(InternationalProjectNotFoundException::new);
+        if(project.getApproved().equals(false))
+            project.setApproved(true);
+        return Optional.of(project);
     }
 }

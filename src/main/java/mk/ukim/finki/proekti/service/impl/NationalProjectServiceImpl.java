@@ -116,10 +116,13 @@ public class NationalProjectServiceImpl implements NationalProjectService {
         return nationalProjectRepository.findByApprovedIsTrue();
     }
 
-    //TODO
+
     @Override
     public Optional<NationalProject> makeApproved(Long id) {
-        return Optional.empty();
+        NationalProject project=this.nationalProjectRepository.findById(id).orElseThrow(NationalProjectNotFoundException::new);
+        if(project.getApproved().equals(false))
+            project.setApproved(true);
+        return Optional.of(project);
     }
 
 

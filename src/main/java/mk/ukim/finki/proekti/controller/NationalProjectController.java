@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/projects/national")
@@ -75,5 +76,12 @@ public class NationalProjectController {
     @GetMapping("/approved")
     public List<NationalProject> findAllApproved() {
         return nationalProjectService.findAllApproved();
+    }
+
+    @PostMapping("/approve/{id}")
+    public ResponseEntity<NationalProject> approveProject(@PathVariable Long id)
+    {
+        return this.nationalProjectService.makeApproved(id).map(project -> ResponseEntity.ok().body(project))
+                .orElseGet(() -> ResponseEntity.badRequest().build());
     }
 }
