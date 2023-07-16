@@ -3,6 +3,8 @@ package mk.ukim.finki.proekti.service;
 import mk.ukim.finki.proekti.models.DTO.NationalProjectDto;
 import mk.ukim.finki.proekti.models.NationalProject;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,4 +29,6 @@ public interface NationalProjectService {
     List<NationalProject> findAllApproved();
 
     Optional<NationalProject> makeApproved(Long id);
+
+    Page<NationalProject> findAllByPagination(Pageable pageable);
 }

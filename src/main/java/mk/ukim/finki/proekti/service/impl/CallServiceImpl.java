@@ -8,6 +8,8 @@ import mk.ukim.finki.proekti.models.exceptions.CallNotFoundException;
 import mk.ukim.finki.proekti.repository.CallRepository;
 import mk.ukim.finki.proekti.service.InstitutionService;
 import mk.ukim.finki.proekti.service.CallService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -66,5 +68,10 @@ public class CallServiceImpl implements CallService {
 
 
         return Optional.of(this.callRepository.save(call));
+    }
+
+    @Override
+    public Page<Call> findAllByPagination(Pageable pageable) {
+        return this.callRepository.findAll(pageable);
     }
 }

@@ -12,6 +12,8 @@ import mk.ukim.finki.proekti.repository.NationalProjectRepository;
 import mk.ukim.finki.proekti.repository.TeacherRepository;
 import mk.ukim.finki.proekti.service.NationalProjectService;
 import mk.ukim.finki.proekti.service.CallService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -123,6 +125,11 @@ public class NationalProjectServiceImpl implements NationalProjectService {
         if (project.getApproved().equals(false))
             project.setApproved(true);
         return Optional.of(project);
+    }
+
+    @Override
+    public Page<NationalProject> findAllByPagination(Pageable pageable) {
+        return this.nationalProjectRepository.findAll(pageable);
     }
 
 

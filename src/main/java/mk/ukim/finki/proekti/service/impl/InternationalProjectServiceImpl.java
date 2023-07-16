@@ -7,6 +7,8 @@ import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
 import mk.ukim.finki.proekti.models.exceptions.InternationalProjectNotFoundException;
 import mk.ukim.finki.proekti.repository.InternationalProjectRepository;
 import mk.ukim.finki.proekti.service.InternationalProjectService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -117,5 +119,10 @@ public class InternationalProjectServiceImpl implements InternationalProjectServ
         if (project.getApproved().equals(false))
             project.setApproved(true);
         return Optional.of(project);
+    }
+
+    @Override
+    public Page<InternationalProject> findAllByPagination(Pageable pageable) {
+        return this.projectRepository.findAll(pageable);
     }
 }

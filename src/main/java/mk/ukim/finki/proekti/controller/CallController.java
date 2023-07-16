@@ -4,6 +4,7 @@ package mk.ukim.finki.proekti.controller;
 import mk.ukim.finki.proekti.models.DTO.CallDto;
 import mk.ukim.finki.proekti.models.Call;
 import mk.ukim.finki.proekti.service.CallService;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,13 @@ public class CallController {
     public List<Call> findAllCalls() {
         return this.callService.findAll();
     }
+
+    @GetMapping("/pagination")
+    public List<Call> findAllWithPagination(Pageable pageable)
+    {
+        return this.callService.findAllByPagination(pageable).getContent();
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Call> findCallById(@PathVariable Long id) {

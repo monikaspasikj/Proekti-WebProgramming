@@ -4,6 +4,7 @@ import mk.ukim.finki.proekti.models.DTO.InternationalProjectDto;
 import mk.ukim.finki.proekti.models.InternationalProject;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
 import mk.ukim.finki.proekti.service.InternationalProjectService;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,12 @@ public class InternationalProjectController {
     @GetMapping("/all")
     public List<InternationalProject> findAllInternationalProjects() {
         return internationalProjectService.findAll();
+    }
+
+    @GetMapping("/pagination")
+    public List<InternationalProject> findAllWithPagination(Pageable pageable)
+    {
+        return this.internationalProjectService.findAllByPagination(pageable).getContent();
     }
 
     @GetMapping("/{id}")

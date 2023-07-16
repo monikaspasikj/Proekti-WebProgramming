@@ -7,6 +7,7 @@ import mk.ukim.finki.proekti.service.NationalProjectService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +26,13 @@ public class NationalProjectController {
     @GetMapping("/all")
     public List<NationalProject> findAllNationalProjects() {
         return this.nationalProjectService.findAll();
+    }
+
+
+    @GetMapping("/pagination")
+    public List<NationalProject> findAllWithPagination(Pageable pageable)
+    {
+        return this.nationalProjectService.findAllByPagination(pageable).getContent();
     }
 
 

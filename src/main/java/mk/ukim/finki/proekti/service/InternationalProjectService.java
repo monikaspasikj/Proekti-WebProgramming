@@ -3,6 +3,8 @@ package mk.ukim.finki.proekti.service;
 import mk.ukim.finki.proekti.models.DTO.InternationalProjectDto;
 import mk.ukim.finki.proekti.models.InternationalProject;
 import mk.ukim.finki.proekti.models.enumerations.TypeStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,5 +29,7 @@ public interface InternationalProjectService {
     List<InternationalProject> findAllApproved();
 
     Optional<InternationalProject> makeApproved(Long id);
+
+    Page<InternationalProject> findAllByPagination(Pageable pageable);
 
 }
